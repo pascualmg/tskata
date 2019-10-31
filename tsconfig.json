@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "ES5",
+    "outDir": "./build"
+  },
+  "include": ["src/**/*"],
+  "locale": "es"
+}
