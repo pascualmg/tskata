@@ -7,13 +7,16 @@ interface talker {
 interface jumper {
     jump(): void
 }
+enum Sex {Male = "Male", Female = "Female"}
 
 abstract class Human {
-    protected constructor(edad: number) {
+    protected constructor(edad: number, sex : Sex) {
         this._edad = edad;
+        this._sex = sex;
     }
 
-    private _edad: number
+    private _edad: number;
+    private readonly _sex: Sex;
 
     edad() {
         return this._edad;
@@ -22,11 +25,12 @@ abstract class Human {
     setEdad(newEdad: number) {
         this._edad = newEdad;
     }
+
 }
 
 class Person extends Human implements talker, jumper {
     constructor() {
-        super(20);
+        super(20, Sex.Female);
     }
 
     talk(): string {
