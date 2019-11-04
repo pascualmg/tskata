@@ -1,5 +1,6 @@
-console.log('hola caracola');
+import {GetIpUseCase} from './Application/getIpUseCase';
 
+(new GetIpUseCase()).handle(console.log)
 interface talker {
     talk(): string
 }
@@ -7,10 +8,11 @@ interface talker {
 interface jumper {
     jump(): void
 }
+
 enum Sex {Male = "Male", Female = "Female"}
 
-abstract class Human {
-    protected constructor(edad: number, sex : Sex) {
+abstract class Human implements talker, jumper {
+    protected constructor(edad: number, sex: Sex) {
         this._edad = edad;
         this._sex = sex;
     }
@@ -22,13 +24,21 @@ abstract class Human {
         return this._edad;
     }
 
+
     setEdad(newEdad: number) {
         this._edad = newEdad;
     }
 
+    jump(): void {
+    }
+
+    talk(): string {
+        return "";
+    }
+
 }
 
-class Person extends Human implements talker, jumper {
+class Person extends Human {
     constructor() {
         super(20, Sex.Female);
     }
